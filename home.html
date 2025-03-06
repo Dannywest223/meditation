@@ -142,7 +142,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 80px;  /* Keep this fixed height */
   transition: height 0.3s ease;
 }
 
@@ -154,15 +154,12 @@ body {
 }
 
 .logo-image {
-  max-width: 200px;
+  max-width: 800px;  /* Increased max-width for larger logo */
   height: auto;
-  max-height: 50px;
+  max-height: 250px;  /* Increased max-height */
   transition: all 0.3s ease;
   display: block;
-}
-
-.header.scrolled .logo-image {
-  max-height: 40px;
+  width:200px;
 }
 
 .logo-image:hover {
@@ -327,80 +324,108 @@ body {
   color: var(--orange);
 }
 
-/* Search styling */
-.search-container {
-  position: relative;
-  margin-left: 1.5rem;
-}
 
+
+
+
+
+/* Search Button */
 .search-toggle {
-  background: rgba(255, 255, 255, 0.15);
-  border: none;
-  color: var(--white);
-  font-size: 0.9rem;
+  background-color: var(--white);
+  border: 2px solid var(--dark-gray);
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: 38px;
-  height: 38px;
+  font-size: 24px;
+  color: var(--dark-gray);
+  padding: 10px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .search-toggle:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
-}
-
-.search-form {
-  position: absolute;
-  top: 120%;
-  right: 0;
-  width: 0;
-  height: 45px;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.3s ease;
-  display: flex;
-  background: var(--white);
-  border-radius: 25px;
-  box-shadow: var(--box-shadow);
-}
-
-.search-form.active {
-  width: 300px;
-  opacity: 1;
-}
-
-.search-input {
-  flex: 1;
-  border: none;
-  padding: 0 1.5rem;
-  font-size: 0.95rem;
-  color: var(--dark-gray);
-  outline: none;
-  border-radius: 25px;
-}
-
-.search-submit {
-  background: var(--orange);
-  border: none;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
+  background-color: var(--teal);
   color: var(--white);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transform: scale(1.1);
 }
 
-.search-submit:hover {
-  background: var(--green);
-  transform: rotate(90deg);
+/* Search Results Container */
+.search-results {
+  display: none;
+  position: fixed; /* Use fixed positioning for centering */
+  top: 50%; /* Vertically center */
+  left: 50%; /* Horizontally center */
+  transform: translate(-50%, -50%); /* Adjust position to truly center */
+  width: 800px;
+  max-width: 800px; /* Adjust width to make it a bit wider */
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: var(--white);
+  border: 1px solid var(--medium-gray);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer, premium shadow */
+  z-index: 10;
+  padding: 10px 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8); /* Initial scale for the pop-up */
 }
+
+.search-results.show {
+  display: block !important;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1); /* Final scale after pop-up appears */
+}
+
+/* Individual Search Item */
+.search-item {
+  padding: 12px 20px;
+  font-size: 16px;
+  color: var(--dark-gray);
+  cursor: pointer;
+  font-family: var(--body-font);
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+/* Hover and Active Effects */
+.search-item:hover {
+  background-color: var(--teal);
+  color: var(--white);
+  padding-left: 20px; /* Adds padding effect on hover */
+}
+
+.search-item:active {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* CTA Button */
 .cta-button {
@@ -588,6 +613,8 @@ body {
   color: var(--dark-gray);
   transition: all 0.4s ease;
   position: relative;
+  margin-left:3rem;
+  margin-top:2rem;
 }
 
 .icon-card:hover {
@@ -786,14 +813,14 @@ body {
     font-size: 1rem;
   }
   
-  .search-container {
-    order: -1;
-    margin: 0 auto 1rem;
-  }
-  
-  .search-form.active {
-    width: 100%;
-  }
+
+
+
+
+
+
+
+
   
   .wellness-icons {
     flex-wrap: wrap;
@@ -1469,9 +1496,6 @@ body {
 
 
 
-
-
-
 .breathing-technique {
   position: relative;
   width: 100%;
@@ -1479,14 +1503,15 @@ body {
   background: url('p.jpg') no-repeat center center/cover;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center; /* Center the content container */
   padding: 0 5%;
 }
 
 .content-container {
-  max-width: 550px;
+  width: 50%; /* Set width to half of the container */
+  max-width: 800px; /* Ensure it doesn’t go too wide */
   background: rgba(0, 0, 0, 0.8);
-  padding: 2.5rem;
+  padding: 3rem; /* Adjusted padding */
   border-radius: 12px;
   color: var(--white);
   text-align: right;
@@ -1495,7 +1520,7 @@ body {
 
 .tagline {
   font-family: var(--secondary-font);
-  font-size: 1rem;
+  font-size: 1.2rem; /* Increased font size */
   font-weight: 700;
   color: var(--yellow);
   letter-spacing: 1px;
@@ -1503,26 +1528,43 @@ body {
 
 .title {
   font-family: var(--primary-font);
-  font-size: 2.2rem;
+  font-size: 3rem; /* Increased font size */
   font-weight: 700;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   color: var(--orange);
 }
 
 .description {
   font-family: var(--body-font);
-  font-size: 1rem;
+  font-size: 1.2rem; /* Increased font size */
   color: var(--light-gray);
-  line-height: 1.6;
+  line-height: 1.8; /* Increased line height for readability */
 }
 
 .highlight {
   font-family: var(--body-font);
-  font-size: 1.2rem;
+  font-size: 1.4rem; /* Increased font size */
   font-weight: bold;
   color: var(--teal);
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
+
+.highlight-link {
+  color: var(--teal);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.highlight-link:hover {
+  color: var(--orange);
+}
+
+
+
+
+
+
 
 
 
@@ -1756,13 +1798,13 @@ h2 {
           <button class="search-toggle">
             <i class="fas fa-search"></i>
           </button>
-          <div class="search-form">
-            <input type="text" placeholder="Search..." class="search-input">
-            <button type="submit" class="search-submit">
-              <i class="fas fa-search"></i>
-            </button>
+          <!-- The search results container that appears when the search button is clicked -->
+          <div class="search-results">
+            <!-- Dynamically populated list of relevant sections will go here -->
           </div>
         </div>
+        
+        
         
         <a href="#" class="cta-button">Get Started</a>
       </nav>
@@ -1954,7 +1996,9 @@ h2 {
       This practice has been known to enhance relaxation, improve mental clarity, and promote emotional balance.
       Backed by research, it offers a transformative approach to holistic well-being.
     </p>
-    <p class="highlight">Explore the Origins & Benefits</p>
+    <p class="highlight">
+      <a href="#" class="highlight-link">Explore the Origins & Benefits</a>
+    </p>
   </div>
 </section>
 
@@ -1971,15 +2015,30 @@ h2 {
       <p class="section-description">From mindfulness workshops to yoga retreats, our programs are designed to fit your lifestyle. Whether you're seeking inner peace, better health, or personal growth, we have a program for you.</p>
       <a href="#" class="btn btn-primary">Browse All Programs</a>
     </div>
-    <div class="programs-gallery">
-      <div class="gallery-item">
-        <img src="y.jpg" alt="Yoga Class">
+    <div class="programs-grid">
+      <div class="program-item">
+        <img src="v.jpg" alt="Beginner (in person)">
+        <span class="overlay-text">Beginner (in person)</span>
       </div>
-      <div class="gallery-item">
-        <img src="s.jpg" alt="Meditation Session">
+      <div class="program-item">
+        <img src="c.jpg" alt="Beginner (online)">
+        <span class="overlay-text">Beginner (online)</span>
       </div>
-      <div class="gallery-item">
-        <img src="g.jpg" alt="Group Workshop">
+      <div class="program-item">
+        <img src="d.jpeg" alt="Children and Teens">
+        <span class="overlay-text">Children and Teens</span>
+      </div>
+      <div class="program-item">
+        <img src="e.jpg" alt="Youth">
+        <span class="overlay-text">Youth</span>
+      </div>
+      <div class="program-item">
+        <img src="f.jpg" alt="Advanced">
+        <span class="overlay-text">Advanced</span>
+      </div>
+      <div class="program-item">
+        <img src="b.jpeg" alt="Follow-ups">
+        <span class="overlay-text">Follow-ups</span>
       </div>
     </div>
   </div>
@@ -2165,37 +2224,75 @@ h2 {
             }
         });
 
-         // Toggle search form
-    document.querySelector('.search-toggle').addEventListener('click', function() {
-      document.querySelector('.search-form').classList.toggle('active');
+        
+        document.addEventListener("DOMContentLoaded", function () {
+  const searchToggle = document.querySelector(".search-toggle");
+  const searchResults = document.querySelector(".search-results");
+
+  // Add a log to check if the click event is firing
+  searchToggle.addEventListener("click", function () {
+    console.log("Search button clicked"); // Add this for testing
+    searchResults.classList.toggle("show");
+    populateSearchResults();
+  });
+
+  // Function to populate search results
+  function populateSearchResults() {
+    const sections = [
+      { title: "Why the Self Care School Matters", id: "about" },
+      { title: "What You'll Gain with Us", id: "benefits" },
+      { title: "What Our Participants Say", id: "testimonials" },
+      { title: "The Power of Breathwork", id: "breathing-technique" },
+      { title: "Explore Our Programs", id: "programs" },
+      { title: "I want to join a program but...", id: "faq" },
+      { title: "Gallery", id: "about" },
+      { title: "Upcoming Events", id: "events" },
+      { title: "Be Part of the Movement", id: "join-us" }
+    ];
+
+    // Clear any existing results
+    searchResults.innerHTML = '';
+
+    // Add the sections to the results
+    sections.forEach(section => {
+      const item = document.createElement('div');
+      item.classList.add('search-item');
+      item.textContent = section.title;
+      item.dataset.id = section.id;
+      searchResults.appendChild(item);
     });
-    
-    // Toggle mobile menu
-    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-      document.querySelector('.nav-links').classList.toggle('active');
+
+    // Add event listeners for smooth scrolling to the corresponding sections
+    document.querySelectorAll(".search-item").forEach(item => {
+      item.addEventListener("click", function () {
+        const sectionId = this.dataset.id;
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+        // Close the search results after selection
+        searchResults.classList.remove("show");
+      });
     });
+  }
 
-     // Toggle search form
-     document.querySelector('.search-toggle').addEventListener('click', function() {
-      document.querySelector('.search-form').classList.toggle('active');
-    });
-    
-    // Toggle mobile menu
-    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-      document.querySelector('.nav-links').classList.toggle('active');
-    });
-
+  // Close the search results when clicking outside (optional)
+  document.addEventListener("click", function (e) {
+    if (!searchResults.contains(e.target) && !searchToggle.contains(e.target)) {
+      searchResults.classList.remove("show");
+    }
+  });
+});
 
 
-
-    const answers = {
-        "answer1": "If you look at the benefits that meditation brings...",
-        "answer2": "You don't need to be able to stand on your head...",
-        "answer3": "You are busy now, but when will you be happy?...",
-        "answer4": "Sudarshan Kriya™ came into being in 1982...",
-        "answer5": "The cornerstone of the Art of Living courses is...",
-        "answer6": "The Art of Living Courses are not expensive..."
-    };
+const answers = {
+    "answer1": "In reality, meditation is even more relevant today, regardless of age. Historically, meditation was used as a path to self-discovery and enlightenment. It was a means to overcome hardships and develop one's potential. While enlightenment may seem like a distant goal for some, the stresses of modern life make meditation crucial for everyone. The more responsibilities you take on, the greater your need for meditation. With bigger ambitions and challenges, meditation becomes an essential tool. If you're not particularly busy, you might not feel the need for it as much. However, the busier your life becomes—if you have limited time, many goals, or high aspirations—the more important meditation is. It helps reduce stress, releases toxins from the body, and calms the mind. In addition, it strengthens your mind and nervous system, sharpening your abilities in all aspects. If you seek greater well-being and happiness, meditation is the key. Don't wait—make it part of your daily life.",
+    "answer2": "You don't need to be able to stand on your head to benefit from the courses offered by the Art of Living! The breathing techniques and meditation methods taught in our programs require no special physical skills, and they are practiced by millions of people around the world, ranging in age from five to ninety years old!",
+    "answer3": "I understand you are busy now, but when will you make time for joy? True happiness can only be found in the present moment. Yet, we often find our minds jumping between the past and the future. We may dwell on past regrets or worry about what lies ahead. Take a moment to observe your thoughts. You'll notice that you tend to delay the good things in life, but never the bad ones. You don't say, 'I'll put off my anger for later.' Instead, you put off happiness until some ideal future that never comes. When you live fully in the present, tomorrow will take care of itself. This is the essence of the Art of Living.",
+    "answer4": "Sudarshan Kriya™ was created in 1982 in Shimoga, India by Gurudev Sri Sri Ravi Shankar, a globally renowned humanitarian and spiritual leader. During a ten-day period of silence, Gurudev felt an inspiration that led to the creation of this powerful, rhythmic breathing technique. As he shared, 'I had already traveled the world, teaching yoga and meditation, but I felt something was still missing. I realized that while people practice these techniques, their lives often remain disconnected from their inner peace. I wanted to bridge the gap between inner silence and how people express themselves in the world.'\n\nThis moment of insight led to the birth of Sudarshan Kriya™. Upon emerging from his silence, Gurudev began teaching this technique, and people had profound experiences. Sudarshan Kriya™ became the foundation of all Art of Living programs. Sri Sri Ravi Shankar has since made ancient wisdom accessible to the modern world, incorporating yoga, pranayama, and meditation into the daily lives of millions over the past four decades.",
+    "answer5": "The cornerstone of the Art of Living courses is a technique called Sudarshan Kriya™. 'Sudarshan' means the right vision of who I am, and 'Kriya' means purifying action. This technique induces deep calm in the mind while energizing every cell in the body. The powerful cleansing process dissolves stress, and within just one hour of your first practice, you'll feel how energy, oxygen, and the mind penetrate deep into every cell, leaving you cleansed on a profound level. Every cell becomes rejuvenated, energized, and more oxidized.\n\nHave you ever wondered where negative thoughts come from? They arise from tension and stress. A relaxed, happy person doesn't get negative thoughts. The more miserable one feels, the more negativity arises. Instead of trying to force positive thoughts, go deeper within yourself—through the breath, through meditation—and cleanse your system. By addressing the root cause of negativity, you eliminate it completely. It doesn’t take long to experience results. With Sudarshan Kriya™, just two days of practice (one hour each day) will cleanse the body and leave you feeling incredibly light and rejuvenated.",
+    "answer6": "The Art of Living Courses are not expensive. There are costs involved in organizing the courses, such as renting venues and acquiring supplies. A portion of the course contribution is used to cover these expenses, while the remaining funds are dedicated to supporting service projects across India.\n\nAdditionally, offering the courses for free can lead to a lack of commitment from participants. People tend not to value something they receive without cost, and without valuing it, they may not take the time to fully engage and learn. Charging a fee ensures that individuals take responsibility for their growth and make the most of the teachings offered."
+};
 
     document.querySelectorAll('.faq-btn').forEach(button => {
         button.addEventListener('click', () => {
