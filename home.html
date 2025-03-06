@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Care School</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+    /* Global Styles */
+  :root {
+  --orange: #EF7125;
+  --yellow: #EFE91E;
+  --teal: #38B8A3;
+  --green: #6ABD45;
+  --blue: #38AEE4;
+  --dark-blue: #3953A4;
+  --purple: #7C287D;
+  --white: #FFFFFF;
+  --light-gray: #F5F5F5;
+  --medium-gray: #E0E0E0;
+  --dark-gray: #333333;
+  --primary-font: 'Rusted Braves DEMO', sans-serif;
+  --secondary-font: 'Roboto Slab Black', serif;
+  --body-font: 'Roboto', sans-serif;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  line-height: 1.6;
+  background: var(--white);
+  color: var(--dark-gray);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-family: var(--primary-font);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.section-description {
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: var(--orange);
+  color: var(--white);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--teal);
+  color: var(--white);
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.btn-tertiary {
+  background-color: var(--purple);
+  color: var(--white);
+  border: none;
+}
+
+.btn-tertiary:hover {
+  background-color: var(--dark-blue);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--teal);
+  color: var(--orange);
+}
+
+.btn-outline:hover {
+  background-color: var(--teal);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Header styles */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background: var(--dark-blue);
+  box-shadow: var(--box-shadow);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s ease;
+}
+
+.header.scrolled {
+  background: var(--dark-blue);
+  height: 70px;
+}
+
+/* Navbar container */
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  transition: height 0.3s ease;
+}
+
+/* Logo styling */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-image {
+  max-width: 200px;
+  height: auto;
+  max-height: 50px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.header.scrolled .logo-image {
+  max-height: 40px;
+}
+
+.logo-image:hover {
+  transform: scale(1.02);
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--yellow);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--yellow);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Dropdown styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-toggle i {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle i {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  width: 540px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 1001;
+  overflow: hidden;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.dropdown-header {
+  background: var(--purple);
+  padding: 1.2rem 1.5rem;
+  color: var(--white);
+}
+
+.dropdown-header h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.dropdown-header p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.dropdown-content {
+  display: flex;
+  padding: 1.5rem;
+  gap: 2rem;
+}
+
+.dropdown-column {
+  flex: 1;
+}
+
+.dropdown-column h5 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--dark-gray);
+  margin-bottom: 1.2rem;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.7rem;
+}
+
+.dropdown-column h5::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--purple);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 0.5rem;
+  color: var(--dark-gray);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-bottom: 0.3rem;
+  border-radius: 6px;
+}
+
+.dropdown-item i {
+  font-size: 1rem;
+  color: var(--purple);
+  transition: all 0.2s ease;
+  width: 24px;
+  text-align: center;
+}
+
+.dropdown-item:hover {
+  color: var(--purple);
+  transform: translateX(5px);
+}
+
+.dropdown-item:hover i {
+  color: var(--orange);
+}
+
+/* Search styling */
+.search-container {
+  position: relative;
+  margin-left: 1.5rem;
+}
+
+.search-toggle {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: var(--white);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.search-form {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  width: 0;
+  height: 45px;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  background: var(--white);
+  border-radius: 25px;
+  box-shadow: var(--box-shadow);
+}
+
+.search-form.active {
+  width: 300px;
+  opacity: 1;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  padding: 0 1.5rem;
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+  outline: none;
+  border-radius: 25px;
+}
+
+.search-submit {
+  background: var(--orange);
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-submit:hover {
+  background: var(--green);
+  transform: rotate(90deg);
+}
+
+/* CTA Button */
+.cta-button {
+  background: var(--orange);
+  color: var(--white);
+  padding: 0.8rem 2.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(239, 113, 37, 0.3);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(239, 113, 37, 0.4);
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  background: var(--dark-blue);
+  overflow: hidden;
+  margin-top: 80px; /* Space for fixed header */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/api/placeholder/1920/1080') center/cover;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.hero-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-text {
+  color: var(--white);
+}
+
+.hero-title {
+  font-size: 3.8rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+}
+
+.hero-title span {
+  color: var(--yellow);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 100%;
+  height: 8px;
+  background-color: rgba(239, 233, 30, 0.3);
+  z-index: -1;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 500px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.hero-image-container {
+  position: relative;
+  height: 550px;
+}
+
+.hero-image {
+  height: 450px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  transition: all 0.5s ease;
+}
+
+.hero-image:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 40px 70px rgba(0, 0, 0, 0.3);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95;
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--white);
+  padding: 0.8rem 2.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 2px solid var(--teal);
+  box-shadow: 0 4px 10px rgba(56, 184, 163, 0.1);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.secondary-button:hover {
+  background: rgba(56, 184, 163, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(56, 184, 163, 0.2);
+}
+
+/* Wellness Icons section */
+/* Wellness Icons section */
+.wellness-icons {
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  transform: translateX(-50%) translateY(50%);
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  z-index: 10;
+}
+
+.icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--dark-gray);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.icon-card:hover {
+  transform: translateY(-10px);
+}
+
+.icon-circle {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+  transition: all 0.4s ease;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+}
+
+.icon-circle i {
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+}
+
+.icon-card:hover .icon-circle {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  transform: scale(1.1);
+}
+
+/* Colored icons */
+.icon-card:nth-child(1) .icon-circle i {
+  color: var(--orange);
+}
+
+.icon-card:nth-child(2) .icon-circle i {
+  color: var(--yellow);
+}
+
+.icon-card:nth-child(3) .icon-circle i {
+  color: var(--blue);
+}
+
+.icon-card:nth-child(4) .icon-circle i {
+  color: var(--green);
+}
+
+.icon-card:nth-child(5) .icon-circle i {
+  color: var(--dark-blue);
+}
+
+.icon-card:nth-child(6) .icon-circle i {
+  color: var(--teal);
+}
+
+.icon-card:nth-child(7) .icon-circle i {
+  color: var(--purple);
+}
+
+.icon-card span {
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--white);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.icon-card:hover span {
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE STYLES */
+/* Large screens (1200px and below) */
+@media (max-width: 1200px) {
+  .dropdown-menu {
+    width: 450px;
+  }
+  
+  .wellness-icons {
+    gap: 1rem;
+  }
+  
+  .icon-circle {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .icon-circle i {
+    font-size: 1.4rem;
+  }
+  
+  .hero-title {
+    font-size: 3.2rem;
+  }
+}
+
+/* Medium screens (1024px and below) */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .hero-subtitle {
+    margin: 0 auto 2.5rem;
+  }
+  
+  .nav-links {
+    gap: 1.5rem;
+  }
+  
+  .hero-image-container {
+    height: 450px;
+  }
+  
+  .hero-image {
+    height: 350px;
+  }
+  
+  .wellness-icons {
+    position: relative;
+    transform: translateX(-50%);
+    margin-top: 2rem;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: var(--premium-gradient);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .dropdown {
+    width: 100%;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    box-shadow: none;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    max-height: 800px;
+    transform: none;
+  }
+  
+  .dropdown-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .search-container {
+    order: -1;
+    margin: 0 auto 1rem;
+  }
+  
+  .search-form.active {
+    width: 100%;
+  }
+  
+  .wellness-icons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .icon-card {
+    margin: 0.5rem;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Small screens (480px and below) */
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2.3rem;
+  }
+  
+  .wellness-icons {
+    margin-top: 1rem;
+  }
+  
+  .icon-circle {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .icon-circle i {
+    font-size: 1.2rem;
+  }
+  
+  .icon-card span {
+    font-size: 0.75rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .nav-container {
+    padding: 0 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-description {
+    font-size: 1rem;
+  }
+}
+
+/* Small phones (375px and below) */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .logo-image {
+    max-width: 160px;
+  }
+  
+  .hero {
+    padding: 0 1rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* About Section */
+.about-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(180deg, var(--blue) 0%, var(--teal) 100%);
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('parallax-bg.jpg') no-repeat center center/cover;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-family: var(--secondary-font);
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.program-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 350px;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease-in-out;
+}
+
+.program-item:hover {
+  transform: scale(1.05);
+}
+
+.program-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  filter: brightness(0.9);
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--white);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: var(--primary-font);
+}
+
+
+
+
+
+
+
+
+/* Benefits Section */
+.benefits-section {
+  padding: 6rem 2rem;
+  background-color: var(--white);
+}
+
+.benefits-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.benefit-card {
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.benefit-card:nth-child(1) {
+  border-top: 5px solid var(--blue);
+}
+
+.benefit-card:nth-child(2) {
+  border-top: 5px solid var(--teal);
+}
+
+.benefit-card:nth-child(3) {
+  border-top: 5px solid var(--green);
+}
+
+.benefit-card:nth-child(4) {
+  border-top: 5px solid var(--orange);
+}
+
+.card-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--light-gray);
+}
+
+.card-icon i {
+  font-size: 28px;
+}
+
+.benefit-card:nth-child(1) .card-icon i {
+  color: var(--blue);
+}
+
+.benefit-card:nth-child(2) .card-icon i {
+  color: var(--teal);
+}
+
+.benefit-card:nth-child(3) .card-icon i {
+  color: var(--green);
+}
+
+.benefit-card:nth-child(4) .card-icon i {
+  color: var(--orange);
+}
+
+.benefit-card h3 {
+  margin-bottom: 1rem;
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 6rem 2rem;
+  background-color: var(--teal);
+  color: var(--white);
+}
+
+.testimonials-section .section-title {
+  color: var(--white);
+}
+
+.testimonials-slider {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.testimonial-content {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  position: relative;
+}
+
+.testimonial-content::before {
+  content: '"';
+  font-size: 4rem;
+  font-family: var(--secondary-font);
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  opacity: 0.2;
+}
+
+.testimonial-content p {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-content h4 {
+  text-align: right;
+  font-weight: normal;
+}
+
+/* Programs Section */
+.programs-section {
+  padding: 6rem 2rem;
+  background-color: var(--white);
+}
+
+.programs-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.programs-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 8px;
+  height: 250px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Gallery Section */
+.gallery-section {
+  padding: 6rem 2rem;
+  background-color: var(--light-gray);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Events Section */
+.events-section {
+  padding: 6rem 2rem;
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.events-section .section-title,
+.events-section .section-description {
+  color: var(--white);
+}
+
+.events-list {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  list-style-type: none;
+}
+
+.event-item {
+  padding: 1rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.event-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.event-name {
+  font-weight: bold;
+}
+
+.event-date {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Join Us Section */
+.join-us-section {
+  padding: 6rem 2rem;
+  background-image: linear-gradient(rgba(60, 83, 164, 0.9), rgba(124, 40, 125, 0.9)), url('assets/images/join-us-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  text-align: center;
+}
+
+.join-us-section .section-title,
+.join-us-section .section-description {
+  color: var(--white);
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--dark-gray);
+  color: var(--white);
+  padding: 4rem 2rem 1.5rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.footer-column h3 {
+  font-family: var(--secondary-font);
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.footer-column h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--orange);
+}
+
+.footer-links,
+.contact-info {
+  list-style-type: none;
+}
+
+.footer-links li,
+.contact-info li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a,
+.contact-info a,
+.footer-link {
+  color: var(--medium-gray);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.contact-info a:hover,
+.footer-link:hover {
+  color: var(--orange);
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+}
+
+.contact-info i {
+  margin-right: 0.8rem;
+  color: var(--orange);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--white);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: var(--orange);
+  transform: translateY(-3px);
+}
+
+.newsletter h4 {
+  margin-bottom: 1rem;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 4px;
+}
+
+.newsletter-form button {
+  background-color: var(--orange);
+  color: var(--white);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  color: var(--medium-gray);
+}
+
+/* Mobile Menu for Responsive Design */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-image {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile Menu Styling */
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(124, 40, 125, 0.97);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  /* Hero Section Responsive */
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .hero-image {
+    display: none;
+  }
+  
+  .hero-subtitle {
+    margin: 0 auto 2.5rem;
+  }
+  
+  /* Benefits Section Responsive */
+  .benefits-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Testimonials & Programs Responsive */
+  .testimonials-slider,
+  .programs-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Event Items Responsive */
+  .event-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .event-date {
+    margin-top: 0.5rem;
+  }
+  
+  /* Join Us Buttons Responsive */
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  /* Footer Responsive */
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .btn, .cta-button, .secondary-button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+  }
+  
+  .footer-column h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+
+
+
+
+
+
+.breathing-technique {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('p.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 5%;
+}
+
+.content-container {
+  max-width: 550px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2.5rem;
+  border-radius: 12px;
+  color: var(--white);
+  text-align: right;
+  box-shadow: var(--box-shadow);
+}
+
+.tagline {
+  font-family: var(--secondary-font);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: 1px;
+}
+
+.title {
+  font-family: var(--primary-font);
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+  color: var(--orange);
+}
+
+.description {
+  font-family: var(--body-font);
+  font-size: 1rem;
+  color: var(--light-gray);
+  line-height: 1.6;
+}
+
+.highlight {
+  font-family: var(--body-font);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--teal);
+  margin-top: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+.faq-section {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(to right, var(--light-gray), var(--medium-gray));
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--dark-gray);
+}
+
+.faq-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.faq-btn {
+    background: var(--green);
+    border: none;
+    padding: 15px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: var(--white);
+    font-weight: bold;
+}
+
+.faq-btn:hover {
+    background: var(--teal);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--dark-gray);
+}
+
+.close-btn:hover {
+    color: var(--yellow);
+}
+
+
+
+
+.about {
+    padding: 80px 5%;
+    background: var(--background-light);
+    text-align: center;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 18px;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: var(--btn-hover);
+    color: var(--text-color);
+}
+
+.programs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted for flexible grid */
+    gap: 20px; /* Slightly reduced gap */
+    margin-top: 40px;
+    justify-items: stretch; /* Make images stretch to fill the grid cells */
+    align-items: stretch; /* Align items inside each grid cell */
+}
+
+.program {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    transition: 0.3s ease-in-out;
+}
+
+.program img {
+    width: 100%;
+    height: 100%; /* Ensure the image occupies the entire container */
+    object-fit: cover; /* Makes the image cover the container without stretching */
+    border-radius: 15px;
+    display: block; /* Ensures the image is displayed properly without extra space */
+}
+
+.program:hover {
+    transform: scale(1.05);
+}
+
+.label {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--white);
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+
+
+    </style>
+</head>
+<body>
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="logo.png" alt="SelfCare School Logo" class="logo-image">
+      </div>
+      
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav class="nav-links">
+        <a href="#" class="nav-link">Home</a>
+        
+        <div class="dropdown">
+          <a href="#" class="nav-link dropdown-toggle">Who We Are <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-header">
+              <h4>About Us</h4>
+              <p>Learn more about our mission and team</p>
+            </div>
+            <div class="dropdown-content">
+              <div class="dropdown-column">
+                <h5>Our Identity</h5>
+                <a href="#" class="dropdown-item"><i class="fas fa-book"></i> Our Story</a>
+                <a href="#" class="dropdown-item"><i class="fas fa-users"></i> Our Team</a>
+                <a href="#" class="dropdown-item"><i class="fas fa-bullseye"></i> Mission & Vision</a>
+              </div>
+              <div class="dropdown-column">
+                <h5>Our Impact</h5>
+                <a href="#" class="dropdown-item"><i class="fas fa-quote-left"></i> Testimonials</a>
+                <a href="#" class="dropdown-item"><i class="fas fa-chart-line"></i> Success Stories</a>
+                <a href="#" class="dropdown-item"><i class="fas fa-handshake"></i> Partnerships</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dropdown">
+          <a href="#" class="nav-link dropdown-toggle">What We Do <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-header">
+              <h4>Our Programs</h4>
+              <p>Discover services designed for your wellness journey</p>
+            </div>
+            <div class="dropdown-content">
+              <div class="dropdown-column">
+                <h5>Group Services</h5>
+                <a href="#" class="dropdown-item"><i class="fas fa-users"></i> Self-Care Programs</a>
+                <a href="#" class="dropdown-item"><i class="fas fa-chalkboard-teacher"></i> Workshops</a>
+                <a href="#" class="dropdown-item"><i class="fas fa-hands-helping"></i> Community Support</a>
+              </div>
+              <div class="dropdown-column">
+                <h5>Individual Services</h5>
+                <a href="#" class="dropdown-item"><i class="fas fa-user-friends"></i> One-on-One Coaching</a>
+                <a href="#" class="dropdown-item"><i class="fas fa-clipboard-check"></i> Personal Assessments</a>
+                <a href="#" class="dropdown-item"><i class="fas fa-calendar-check"></i> Custom Plans</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <a href="#" class="nav-link">Blog</a>
+        
+        <div class="search-container">
+          <button class="search-toggle">
+            <i class="fas fa-search"></i>
+          </button>
+          <div class="search-form">
+            <input type="text" placeholder="Search..." class="search-input">
+            <button type="submit" class="search-submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+        
+        <a href="#" class="cta-button">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">Empower Yourself, <span>Elevate Your Life</span></h1>
+        <p class="hero-subtitle">
+          Unleash your potential with mindfulness, meditation, and self-care practices designed to enrich your life.
+        </p>
+        <div class="hero-buttons">
+          <a href="#" class="cta-button">Get Started</a>
+          <a href="#" class="secondary-button">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-image-container">
+        <div class="hero-image">
+          <img src="f.jpg" alt="Meditation scene">
+        </div>
+        
+        <!-- Icons section positioned at the middle bottom with no background -->
+        <div class="wellness-icons">
+          <a href="/stress-management" class="icon-card">
+            <div class="icon-circle">
+              <i class="fas fa-brain"></i>
+            </div>
+            <span>Stress</span>
+          </a>
+          <a href="/anger-management" class="icon-card">
+            <div class="icon-circle">
+              <i class="fas fa-fire"></i>
+            </div>
+            <span>Anger</span>
+          </a>
+          <a href="/depression-help" class="icon-card">
+            <div class="icon-circle">
+              <i class="fas fa-cloud-rain"></i>
+            </div>
+            <span>Depression</span>
+          </a>
+          <a href="/parenting" class="icon-card">
+            <div class="icon-circle">
+              <i class="fas fa-child"></i>
+            </div>
+            <span>Parenting</span>
+          </a>
+          <a href="/sleep-improvement" class="icon-card">
+            <div class="icon-circle">
+              <i class="fas fa-moon"></i>
+            </div>
+            <span>Sleep</span>
+          </a>
+          <a href="/weight-loss" class="icon-card">
+            <div class="icon-circle">
+              <i class="fas fa-weight"></i>
+            </div>
+            <span>Weight</span>
+          </a>
+          <a href="/wellness" class="icon-card">
+            <div class="icon-circle">
+              <i class="fas fa-heart"></i>
+            </div>
+            <span>Wellness</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+
+
+
+   <!-- About Section -->
+   <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">Why the Self Care School Matters</h2>
+        <p class="section-description">The Self Care School is about creating harmony between your mind, body, and soul. With our expert-led programs, you'll discover practical tools to navigate life's challenges, achieve balance, and unlock your full potential.</p>
+        <a href="#" class="btn btn-primary">Learn More About Us</a>
+      </div>
+      
+      <div class="programs-grid">
+        <div class="program-item">
+          <img src="v.jpg" alt="Beginner (in person)">
+          <span class="overlay-text">Beginner (in person)</span>
+        </div>
+        <div class="program-item">
+          <img src="c.jpg" alt="Beginner (online)">
+          <span class="overlay-text">Beginner (online)</span>
+        </div>
+        <div class="program-item">
+          <img src="d.jpeg" alt="Children and Teens">
+          <span class="overlay-text">Children and Teens</span>
+        </div>
+        <div class="program-item">
+          <img src="e.jpg" alt="Youth">
+          <span class="overlay-text">Youth</span>
+        </div>
+        <div class="program-item">
+          <img src="f.jpg" alt="Advanced">
+          <span class="overlay-text">Advanced</span>
+        </div>
+        <div class="program-item">
+          <img src="b.jpeg" alt="Follow-ups">
+          <span class="overlay-text">Follow-ups</span>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Key Benefits Section -->
+<section id="benefits" class="benefits-section">
+  <div class="container">
+    <h2 class="section-title">What You'll Gain with Us</h2>
+    <div class="benefits-cards">
+      <div class="benefit-card">
+        <div class="card-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <h3>Stay Present</h3>
+        <p>Learn to live in the moment with guided mindfulness techniques.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="card-icon">
+          <i class="fas fa-spa"></i>
+        </div>
+        <h3>Ease Your Stress</h3>
+        <p>Discover how meditation and yoga can help you manage stress effectively.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="card-icon">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <h3>Grow Your Potential</h3>
+        <p>Build confidence, clarity, and emotional resilience through our programs.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="card-icon">
+          <i class="fas fa-balance-scale"></i>
+        </div>
+        <h3>Find Your Balance</h3>
+        <p>Learn strategies to harmonize your career and personal life.</p>
+      </div>
+    </div>
+    <a href="#" class="btn btn-secondary">Explore All Benefits</a>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials-section">
+  <div class="container">
+    <h2 class="section-title">What Our Participants Say</h2>
+    <div class="testimonials-slider">
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"The Self Care School has transformed my life. I feel calmer, more focused, and truly in control of my emotions."</p>
+          <h4>Anjali Gupta</h4>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"I attended a mindfulness workshop, and it changed my perspective on stress management. Highly recommend it!"</p>
+          <h4>Rohan Mehta</h4>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"The yoga retreat was the reset I needed. I came back feeling recharged and inspired."</p>
+          <h4>Sarah Johnson</h4>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="btn btn-tertiary">Read More Stories</a>
+  </div>
+</section>
+
+
+
+<section class="breathing-technique">
+  <div class="content-container">
+    <h3 class="tagline">The Power of Breathwork</h3>
+    <h2 class="title">Serenity Breathing Method</h2>
+    <p class="description">
+      Discover the profound benefits of controlled breathing techniques. 
+      This practice has been known to enhance relaxation, improve mental clarity, and promote emotional balance.
+      Backed by research, it offers a transformative approach to holistic well-being.
+    </p>
+    <p class="highlight">Explore the Origins & Benefits</p>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Programs Section -->
+<section id="programs" class="programs-section">
+  <div class="container">
+    <div class="programs-content">
+      <h2 class="section-title">Explore Our Programs</h2>
+      <p class="section-description">From mindfulness workshops to yoga retreats, our programs are designed to fit your lifestyle. Whether you're seeking inner peace, better health, or personal growth, we have a program for you.</p>
+      <a href="#" class="btn btn-primary">Browse All Programs</a>
+    </div>
+    <div class="programs-gallery">
+      <div class="gallery-item">
+        <img src="y.jpg" alt="Yoga Class">
+      </div>
+      <div class="gallery-item">
+        <img src="s.jpg" alt="Meditation Session">
+      </div>
+      <div class="gallery-item">
+        <img src="g.jpg" alt="Group Workshop">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="faq-section">
+  <h2>I want to join a program but...</h2>
+  <div class="faq-container">
+      <button class="faq-btn" data-answer="answer1">Isn’t meditation for people above 60 years?</button>
+      <button class="faq-btn" data-answer="answer2">I'm not flexible enough</button>
+      <button class="faq-btn" data-answer="answer3">I am busy now</button>
+      <button class="faq-btn" data-answer="answer4">Who created these programs?</button>
+      <button class="faq-btn" data-answer="answer5">How soon will I start seeing results?</button>
+      <button class="faq-btn" data-answer="answer6">Why do you charge fees?</button>
+  </div>
+
+  <div class="popup" id="popup">
+      <div class="popup-content">
+          <span class="close-btn">&times;</span>
+          <h3 id="popup-title"></h3>
+          <p id="popup-text"></p>
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section id="about" class="about">
+  <div class="container">
+      <div class="about-text">
+          <h2 class="title">Gallery</h2>
+          <p class="description">
+            Explore moments from our workshops, retreats, and corporate programs through our vibrant gallery. Experience the impact of our initiatives through inspiring images and videos
+          </p>
+          <a href="#" class="btn">Learn More About Us</a>
+      </div>
+
+      <div class="programs">
+          <div class="program">
+              <img src="s.jpg" alt="Beginner (in person)">
+              <span class="label">Decoding Karma</span>
+          </div>
+          <div class="program">
+              <img src="q.jpg" alt="Beginner (online)">
+              <span class="label">The Four Big Worries How To Eliminate Them</span>
+          </div>
+          <div class="program">
+              <img src="w.jpg" alt="Children and Teens">
+              <span class="label">How Love Can Remove Fear</span>
+          </div>
+          <div class="program">
+              <img src="y.jpg" alt="Youth">
+              <span class="label">How To Increase Will Power</span>
+          </div>
+          <div class="program">
+              <img src="v.jpg" alt="Advanced">
+              <span class="label">The Art Of Effective Communication</span>
+          </div>
+          <div class="program">
+              <img src="d.jpeg" alt="Follow-ups">
+              <span class="label">Personality Development Unlocked</span>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Events Section -->
+<section id="events" class="events-section">
+  <div class="container">
+    <h2 class="section-title">Upcoming Events</h2>
+    <p class="section-description">Join our upcoming events and connect with a community of like-minded individuals. Transform your mind, body, and soul through curated sessions.</p>
+    <ul class="events-list">
+      <li class="event-item">
+        <span class="event-name">Weekend Yoga Retreat</span>
+        <span class="event-date">February 20, 2025</span>
+      </li>
+      <li class="event-item">
+        <span class="event-name">Mindfulness Workshop</span>
+        <span class="event-date">March 5, 2025</span>
+      </li>
+      <li class="event-item">
+        <span class="event-name">Online Stress Relief Webinar</span>
+        <span class="event-date">March 15, 2025</span>
+      </li>
+    </ul>
+    <a href="#" class="btn btn-secondary">View All Events</a>
+  </div>
+</section>
+
+<!-- Join Us Section -->
+<section id="join-us" class="join-us-section">
+  <div class="container">
+    <h2 class="section-title">Be Part of the Movement</h2>
+    <p class="section-description">Ready to transform your life? Join our vibrant community and start your journey toward peace and balance today!</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-primary">Sign Up Now</a>
+      <a href="#" class="btn btn-outline">Volunteer With Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About</h3>
+        <p>The Self Care School is dedicated to empowering individuals to lead balanced, fulfilling lives through mindfulness, meditation, and wellness practices.</p>
+        <a href="#" class="footer-link">About Us</a>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Blogs</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Information</h3>
+        <ul class="contact-info">
+          <li><i class="fas fa-envelope"></i> support@origami.com</li>
+          <li><i class="fas fa-phone"></i> +91-1234567890</li>
+          <li><i class="fas fa-map-marker-alt"></i> Delhi, India</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="newsletter">
+          <h4>Subscribe to Our Newsletter</h4>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your Email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Self Care School. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+    <script>
+       // Script for scroll effects on header
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.padding = '0.8rem 0';
+                header.style.background = 'rgba(124, 40, 125, 0.98)';
+            } else {
+                header.style.padding = '1.2rem 0';
+                header.style.background = 'rgba(124, 40, 125, 0.97)';
+            }
+        });
+
+         // Toggle search form
+    document.querySelector('.search-toggle').addEventListener('click', function() {
+      document.querySelector('.search-form').classList.toggle('active');
+    });
+    
+    // Toggle mobile menu
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+     // Toggle search form
+     document.querySelector('.search-toggle').addEventListener('click', function() {
+      document.querySelector('.search-form').classList.toggle('active');
+    });
+    
+    // Toggle mobile menu
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+
+
+
+    const answers = {
+        "answer1": "If you look at the benefits that meditation brings...",
+        "answer2": "You don't need to be able to stand on your head...",
+        "answer3": "You are busy now, but when will you be happy?...",
+        "answer4": "Sudarshan Kriya™ came into being in 1982...",
+        "answer5": "The cornerstone of the Art of Living courses is...",
+        "answer6": "The Art of Living Courses are not expensive..."
+    };
+
+    document.querySelectorAll('.faq-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            document.getElementById('popup-title').textContent = button.textContent;
+            document.getElementById('popup-text').textContent = answers[button.dataset.answer];
+            document.getElementById('popup').style.display = 'flex';
+        });
+    });
+
+    document.querySelector('.close-btn').addEventListener('click', () => {
+        document.getElementById('popup').style.display = 'none';
+    });
+
+    document.getElementById('popup').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('popup')) {
+            document.getElementById('popup').style.display = 'none';
+        }
+    });
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
